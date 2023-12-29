@@ -35,7 +35,9 @@ I have practically written a book on this topic at this point by reviewing some 
 The main reason is Swift. Extension and value type should completely change the way you structure your code, among other Swift features.
 
 ## Try it 
-I archived my Medium posts in /posts. You can read it at your leisure. Note that some links may be broken since I got banned. 
+I archived my Medium posts in /posts. Here is [the list](https://swift2931.github.io/cleanarchitecturesucks/posts/index.html). 
+
+Note that some links may be broken since I got banned. 
 
 It's safe to say at this point, almost a decade after Swift is born, I have some unique takes on usage of Swift that you won't find it anywhere else.
 
