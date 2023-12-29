@@ -34,12 +34,16 @@ I have practically written a book on this topic at this point by reviewing some 
 
 The main reason is Swift. Extension and value type should completely change the way you structure your code, among other Swift features.
 
-## Try it 
+## Function-oriented POP
 I archived my Medium posts in /posts. Here is [the list](https://swift2931.github.io/cleanarchitecturesucks/posts/index.html). 
 
-Note that some links may be broken since I got banned. 
+Note that code snippets lost formatting, and some links may be broken since they are not hosted as intented. 
 
-It's safe to say at this point, almost a decade after Swift is born, I have some unique takes on usage of Swift that you won't find it anywhere else.
+Over the course of a couple years, there's a new pattern emerging. You can actually see the evolution if you read the posts. 
+
+I'm going to coin the term first, elaborate more if I can find a platform where I can speak more freely. 
+
+
 
 
 
