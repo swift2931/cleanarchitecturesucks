@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Over-generalization done right</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Over-generalization done right</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+With Reactive MVVM + Coordinator, and RxDataSources
+</section>
+<section data-field="body" class="e-content">
+<section name="faf4" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="6273" id="6273" class="graf graf--h3 graf--leading graf--title">Over-generalization done right</h3><p name="4203" id="4203" class="graf graf--p graf-after--h3">With Reactive MVVM + Coordinator, and RxDataSources</p><figure name="2652" id="2652" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*VQIkNntXzun0PQE1s_JFZQ.jpeg" data-width="480" data-height="360" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*VQIkNntXzun0PQE1s_JFZQ.jpeg"><figcaption class="imageCaption">Boilerplate mess is only the beginning</figcaption></figure><h4 name="4cc6" id="4cc6" class="graf graf--h4 graf-after--figure">How do you do the simplest task in the most complex way in iOS?</h4><p name="8683" id="8683" class="graf graf--p graf-after--h4">By using every design pattern known to men simultaneously.</p><p name="cbd0" id="cbd0" class="graf graf--p graf-after--p">As shown in this epic article:</p><p name="041d" id="041d" class="graf graf--p graf-after--p"><a href="https://medium.com/better-programming/reactive-mvvm-and-the-coordinator-pattern-done-right-88248baf8ca5" data-href="https://medium.com/better-programming/reactive-mvvm-and-the-coordinator-pattern-done-right-88248baf8ca5" class="markup--anchor markup--p-anchor" target="_blank">Reactive MVVM and the Coordinator Pattern Done Right</a></p><p name="734a" id="734a" class="graf graf--p graf-after--p">Full disclosure, I got blocked by the dude for pointing out flaws in his grand design. But no this ain’t personal. This is a critique and comparison. If your design is half as good as you claim, then it should survive a closer inspection right?</p><h4 name="2f2d" id="2f2d" class="graf graf--h4 graf-after--p">Gods of men</h4><blockquote name="62f7" id="62f7" class="graf graf--blockquote graf-after--h4">Now what? It’s time to take your MVVM knowledge to a whole new level — reactive MVVM with coordinators!</blockquote><figure name="2435" id="2435" class="graf graf--figure graf-after--blockquote"><img class="graf-image" data-image-id="1*PUphdQG9-eJFq5JswQfGyg.jpeg" data-width="462" data-height="307" src="https://cdn-images-1.medium.com/max/800/1*PUphdQG9-eJFq5JswQfGyg.jpeg"><figcaption class="imageCaption">Let us take our MVVM to heights reserved only for the <a href="https://en.wikiquote.org/wiki/Gods" data-href="https://en.wikiquote.org/wiki/Gods" class="markup--anchor markup--figure-anchor" title="Gods" rel="noopener" target="_blank"><em class="markup--em markup--figure-em">gods</em></a> of men!</figcaption></figure><p name="cfd4" id="cfd4" class="graf graf--p graf-after--figure">The example in the linked article is a tableview-detail with a remote fetch to get its contents. You can verify this yourself.</p><p name="e3bd" id="e3bd" class="graf graf--p graf-after--p">Now I want you to recall how every beginner tutorial handles this with nothing but UIKit. Try to picture how the codes and project structure would look like.</p><p name="d687" id="d687" class="graf graf--p graf-after--p">Ready? Let’s take our MVVM to heights reserved only for the gods of men!</p><p name="842e" id="842e" class="graf graf--p graf-after--p">Here’s his project structure:</p><figure name="745c" id="745c" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*KQvRpW2vb2qoZWgbOtl4pw.png" data-width="320" data-height="478" src="https://cdn-images-1.medium.com/max/800/1*KQvRpW2vb2qoZWgbOtl4pw.png"></figure><p name="0e6b" id="0e6b" class="graf graf--p graf-after--figure">And here’s his dependencies:</p><figure name="c387" id="c387" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*5wLaRWgaMI4b1DnGEStU-Q.png" data-width="1400" data-height="527" src="https://cdn-images-1.medium.com/max/800/1*5wLaRWgaMI4b1DnGEStU-Q.png"></figure><p name="5bb9" id="5bb9" class="graf graf--p graf-after--figure">Now ask yourself, does this look like an overkill?</p><p name="b0ad" id="b0ad" class="graf graf--p graf-after--p">Yes, but you may argue that this is just the preparation, and it will prove its worth in large projects.</p><p name="448c" id="448c" class="graf graf--p graf-after--p">Obviously you think MVVM, RxSwift, Coordinator and RxCocoa on top of UIKit together can curve the bullet.</p><p name="9c86" id="9c86" class="graf graf--p graf-after--p">Let’s break it down, and see if we can find alternative to replace their functionalities.</p><ol class="postList"><li name="6146" id="6146" class="graf graf--li graf-after--p">Rx provides events, binding, built-in state machines.</li><li name="b29a" id="b29a" class="graf graf--li graf-after--li">MVVM requires you to attach bindings manually to view model, on which you build networking and whatever shit you deem convenient.</li><li name="0fe5" id="0fe5" class="graf graf--li graf-after--li">Coordinator sets up your shit because your shit becomes too massive to setup.</li></ol><p name="5806" id="5806" class="graf graf--p graf-after--li">With these in mind, I’m gonna do what’s called a <strong class="markup--strong markup--p-strong">pro gamer move</strong>.</p><h4 name="cac6" id="cac6" class="graf graf--h4 graf-after--p">Pro gamer move</h4><ol class="postList"><li name="69f4" id="69f4" class="graf graf--li graf-after--h4">Remove MVVM</li></ol><p name="7bdb" id="7bdb" class="graf graf--p graf-after--li">If you need to create binding <strong class="markup--strong markup--p-strong">manually</strong>, you are doing it wrong, and your architecture should be discarded.</p><p name="ec11" id="ec11" class="graf graf--p graf-after--p">Why? Because binding is something that can be generated <strong class="markup--strong markup--p-strong">automatically</strong>. You are doing things that a complier can do flawlessly. That means your code is glue code. MVVM always operates under SDK binding support, which you do <strong class="markup--strong markup--p-strong">NOT </strong>have in UIKit.</p><p name="6300" id="6300" class="graf graf--p graf-after--p">The second mistake MVVM devs made in iOS is to underestimate Swift. They are under this illusion that a new language released in 2015 forgot to support the awesomeness that is MVVM. So this drawback is amended by various approaches to manually create bindings.</p><p name="d2c1" id="d2c1" class="graf graf--p graf-after--p">Which seems more plausible? The Swift dev team in Apple that got paid ungodly amount of money has never heard of MVVM? Or they reviewed it and determined a better approach is to use property observer that works well with value type and can archive the same effect without external reference type object; and that binding should wait until SwiftUI since it requires a SDK overhaul.</p><p name="7db7" id="7db7" class="graf graf--p graf-after--p">This line triggers a view update whenever the value type model changes.</p><pre name="88ca" id="88ca" class="graf graf--pre graf-after--p">var model = State() {didSet { updateUI()} }</pre><p name="d1d6" id="d1d6" class="graf graf--p graf-after--pre">, which is what you want from binding, but without binding.</p><p name="e5bf" id="e5bf" class="graf graf--p graf-after--p">You don’t need an external view model object, a reference type object at that. You do shit on top of it to take advantage of the bindings you just created, which you can just as easily do with property observer.</p><p name="2de1" id="2de1" class="graf graf--p graf-after--p">With MVVM shit gone, you don’t need binding, which eliminates Rx shit. There’s no view models, so nothing to setup or pass as parameters. You can use a much simpler coordinator without worrying about view models setup if even needed at all.</p><h4 name="692a" id="692a" class="graf graf--h4 graf-after--p">Vanity, my favorite sin</h4><p name="c85f" id="c85f" class="graf graf--p graf-after--h4">Some devs like to use Rx shit, because of the alleged high threshold of entry.</p><p name="9e0f" id="9e0f" class="graf graf--p graf-after--p">Let me say this, if you need RxSwift, RxRelay, RxAlamofire on top of Alamofire and ObjectMapper to do networking, you suck.</p><p name="635e" id="635e" class="graf graf--p graf-after--p">You know what I use for networking? URLSession. And the code is cleaner than that with above 5 libraries combined.</p><p name="8fc3" id="8fc3" class="graf graf--p graf-after--p">Yes, you may have some nice built-in state machine like throttle(), retry(), which is coupled with the functional (supposed to be stateless) part by the way. But a well-oiled homebrew library can easily do that without being tied to observer and infinite stream of events.</p><p name="170c" id="170c" class="graf graf--p graf-after--p">Not to mention most of the time you are just using Rx to do binding, which is just glue code, and callbacks.</p><p name="90f4" id="90f4" class="graf graf--p graf-after--p">RxDataSource is just ridiculous. A value type with property observer that respects UIKit is all you need. Nothing shows skill like using simple native ways to solve complex problem; and nothing shows the lack of skill like using complex external dependencies to do simple task.</p><p name="2338" id="2338" class="graf graf--p graf-after--p">By removing all this shit, you get what you see in every beginner tutorial. It’s embarrassing to get through all the FRP shit to be destroyed by beginner tutorial; which is why they never bother to compare Reactive MVVM+C with standard SDK approach.</p><p name="8421" id="8421" class="graf graf--p graf-after--p">The only argument is that Reactive MVVM + C scales to large projects. If you keep using complex dependencies to do simple tasks like callback, it would never scale.</p><h4 name="e8e3" id="e8e3" class="graf graf--h4 graf-after--p">Exercise</h4><p name="609d" id="609d" class="graf graf--p graf-after--h4">Write it without any dependencies. Try using property observers. If you think something is messy and may not scale, google POP. Composition by function is far easier than composition by objects.</p><p name="71ff" id="71ff" class="graf graf--p graf-after--p graf--trailing">Do you notice that Reactive MVVM + C says nothing about unique features such as property observer, value type, POP?</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/ffebfa8f32b6"><time class="dt-published" datetime="2020-10-21T15:51:00.815Z">October 21, 2020</time></a>.</p><p><a href="https://medium.com/@swift2931/over-generalization-done-right-ffebfa8f32b6" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

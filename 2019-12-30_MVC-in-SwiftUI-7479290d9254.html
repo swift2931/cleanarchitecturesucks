@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>MVC in SwiftUI</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">MVC in SwiftUI</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+How do you add two numbers?
+</section>
+<section data-field="body" class="e-content">
+<section name="3a66" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="75e3" id="75e3" class="graf graf--h3 graf--leading graf--title">MVC in SwiftUI</h3><figure name="c5fb" id="c5fb" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*lXt5JxLDOu5X7eHGlTze1A.jpeg" data-width="1280" data-height="720" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*lXt5JxLDOu5X7eHGlTze1A.jpeg"><figcaption class="imageCaption">This is how MVC looks in SwiftUI, if you do it right</figcaption></figure><h4 name="60f1" id="60f1" class="graf graf--h4 graf-after--figure">How do you add two numbers?</h4><pre name="fd60" id="fd60" class="graf graf--pre graf-after--h4">return a + b</pre><p name="5d44" id="5d44" class="graf graf--p graf-after--pre">Nah, it’s not OOP enough.</p><pre name="13c2" id="13c2" class="graf graf--pre graf-after--p">class Adder {</pre><pre name="b87a" id="b87a" class="graf graf--pre graf-after--pre">    var a = 0</pre><pre name="db6c" id="db6c" class="graf graf--pre graf-after--pre">    var b = 0</pre><pre name="f052" id="f052" class="graf graf--pre graf-after--pre">    init(_ a: Int, _ b: Int) {<br>        self.a = a<br>        self.b = b<br>    }</pre><pre name="8f5f" id="8f5f" class="graf graf--pre graf-after--pre">    func add() { return a + b }<br>}</pre><p name="4aa5" id="4aa5" class="graf graf--p graf-after--pre">Better, but you’d have massive view controller problem. MVVM is the way.</p><pre name="79e9" id="79e9" class="graf graf--pre graf-after--p">class AdderViewModel: ObservableObject {</pre><pre name="1b52" id="1b52" class="graf graf--pre graf-after--pre">    var a = 0</pre><pre name="8082" id="8082" class="graf graf--pre graf-after--pre">    var b = 0</pre><pre name="2113" id="2113" class="graf graf--pre graf-after--pre">    init(_ a: Int, _ b: Int) {<br>        self.a = a<br>        self.b = b<br>    }</pre><pre name="e452" id="e452" class="graf graf--pre graf-after--pre">    func add() -&gt; Int { return a + b }</pre><pre name="b2d3" id="b2d3" class="graf graf--pre graf-after--pre">}</pre><pre name="e5da" id="e5da" class="graf graf--pre graf-after--pre">struct Model: View {</pre><pre name="4e75" id="4e75" class="graf graf--pre graf-after--pre">    @ObservedObject var vm = AdderViewModel(...)<br>}</pre><p name="6fac" id="6fac" class="graf graf--p graf-after--pre">Good. Now it’s testable, reusable, clean. If MVVM were any smarter it would write itself.</p><h4 name="2a50" id="2a50" class="graf graf--h4 graf-after--p">What a load of shit</h4><p name="6a53" id="6a53" class="graf graf--p graf-after--h4">MVVM is the plague in iOS development.</p><p name="5098" id="5098" class="graf graf--p graf-after--p">This <a href="https://medium.com/@azamsharp/mvvm-in-swiftui-8a2e9cc2964a" data-href="https://medium.com/@azamsharp/mvvm-in-swiftui-8a2e9cc2964a" class="markup--anchor markup--p-anchor" target="_blank">article </a>is a top search result in which it states that MVC no longer exists in SwiftUI. Think about this. Control is controlled by view model.</p><p name="e9eb" id="e9eb" class="graf graf--p graf-after--p">This <a href="https://nalexn.github.io/clean-architecture-swiftui/" data-href="https://nalexn.github.io/clean-architecture-swiftui/" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">piece </a>claims MVVM is the new standard architecture.</p><p name="b08d" id="b08d" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">They are both wrong.</strong></p><p name="7c58" id="7c58" class="graf graf--p graf-after--p">SwiftUI enhances MVC. Now you have automatic model-view binding, so you write less code to manage view updates.</p><p name="03cc" id="03cc" class="graf graf--p graf-after--p">In a sense the best part of MVVM is already built-in. So if anything there are now <strong class="markup--strong markup--p-strong">fewer </strong>incentives for you to use MVVM. Why another layer of MVVM on top of MVVM?</p><p name="41d0" id="41d0" class="graf graf--p graf-after--p">Funny thing is that this model-view mapping should be apparent to MVVM developers. This is literally what they’ve been doing all day. Just as they failed to notice that Swift does not have binding before SwiftUI and Combine. For those who did notice, they introduced RxSwift (which is based on KVO)to make things worse.</p><p name="2f34" id="2f34" class="graf graf--p graf-after--p">Most of the MVVM developers I know don’t bother thinking about architecture or improving coding skill. They slapped “ViewModel” to every class name and voila, mission accomplished.</p><p name="83f7" id="83f7" class="graf graf--p graf-after--p">You can write cleaner codes with plain MVC to replace those in above linked articles. I have another article dedicated for that so I won’t cover it here. However I would highlight some common problems among MVVM-ers.</p><h4 name="3fde" id="3fde" class="graf graf--h4 graf-after--p">You don’t use MVVM to do networking</h4><p name="a4b8" id="a4b8" class="graf graf--p graf-after--h4">You use networking to do networking.</p><p name="2310" id="2310" class="graf graf--p graf-after--p">It’s called de-coupling. Just because some mutable property can be used to update view does not mean you should always bundle them altogether.</p><p name="8bde" id="8bde" class="graf graf--p graf-after--p">Let model be model, let view be view. SwiftUI provides way to update view upon model change, use it. As I said, SwiftUI enhances MVC, not replaces it.</p><p name="0773" id="0773" class="graf graf--p graf-after--p">For example, you want to retrieve a list from remote site and display it.</p><p name="063a" id="063a" class="graf graf--p graf-after--p">Wrap your list in a dedicated networking operation handler reference type which is reusable instead of some bullshit view model that handle network operation <em class="markup--em markup--p-em">implicitly </em>anyway.</p><p name="0e7d" id="0e7d" class="graf graf--p graf-after--p">Let this handler conform to ObservableObject and publish that list. Observe it in your model. Done. Why do I need view model again?</p><h4 name="2230" id="2230" class="graf graf--h4 graf-after--p">@State and value type</h4><p name="58e5" id="58e5" class="graf graf--p graf-after--h4">Instead of putting state/control properties in view model, then observe them, declare them using @State attribute.</p><p name="6939" id="6939" class="graf graf--p graf-after--p">Putting state properties in view model makes view model take the role of control <em class="markup--em markup--p-em">implicitly</em>. And when there are multiple view models, you risk contention and conflict of control.</p><p name="afe8" id="afe8" class="graf graf--p graf-after--p">These are the things that MVVM won’t tell you. The only thing MVVM-er would tell you is that you are risking massive view controller. Here, take this even more massive and messy view model to prevent it.</p><p name="2482" id="2482" class="graf graf--p graf-after--p">Moving stored property out of model does not solve anything. You are just making the access of it more difficult and error-prone.</p><p name="8849" id="8849" class="graf graf--p graf-after--p">For example you want to build a chocolate-milk factory. You want chocolate and milk resources as close to your factory as possible. Bring the factory to chocolate or bring milk to factory is just extra work.</p><p name="c188" id="c188" class="graf graf--p graf-after--p">To make things worse, there are usually core properties that other properties build upon. Once you move core properties in one place, you have to move all associated there too. All more unnecessary work.</p><p name="3e63" id="3e63" class="graf graf--p graf-after--p">On the other hand, there’s a reason SwiftUI uses value type in model-view mapping, and goes out of its way to implement @State so you can have mutability from within value type. SwiftUI would just create a new model on mutation and rebuild view from which. Other than that, the model is immutable.</p><p name="722a" id="722a" class="graf graf--p graf-after--p">In the mean time, MVVM-ers are stuck in the past using reference type view model without any security check on mutation. And this is where you decide to put your state property?</p><p name="036c" id="036c" class="graf graf--p graf-after--p">And remember, this is a view model nested in a model that maps to view. All the extra work for what?</p><h4 name="b157" id="b157" class="graf graf--h4 graf-after--p">Don’t use view model for control</h4><p name="9cc8" id="9cc8" class="graf graf--p graf-after--h4">It’s funny how MVVM-ers ignore C in MVC. If your MVC codes are messed up, chances are due to you can’t manage control codes properly. Most of the same problems would still be present in MVVM since view model doesn’t address control in any way.</p><p name="b7b4" id="b7b4" class="graf graf--p graf-after--p">MVVM-ers like to talk about clean architecture, re-usability, easy-to-test. The fact is that the more you couple things in whatever object you call it, the more difficult it is to do any of which.</p><p name="4d9c" id="4d9c" class="graf graf--p graf-after--p">Once you put networking in view model, all hell break loose since everything is built around that. View model becomes view controller… which is the very thing MVVM swore to destroy.</p><p name="43d2" id="43d2" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">The genius of SwiftUI is that it wants you to use value type model for safety while providing out-of-box model-view mapping.</strong></p><p name="a395" id="a395" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Then it introduces @State so you have explicit control/state properties within a value type which cannot be mutated outside of model scope.</strong></p><p name="ddd1" id="ddd1" class="graf graf--p graf-after--p"><em class="markup--em markup--p-em">Model, View, Control, all in one value type.</em></p><p name="fcad" id="fcad" class="graf graf--p graf-after--p">Most MVVM-ers are so used to view model paradigms, they think MVVM is about having a view model object.</p><blockquote name="f71c" id="f71c" class="graf graf--blockquote graf-after--p">Asgard is not a place, it is people.</blockquote><p name="246e" id="246e" class="graf graf--p graf-after--blockquote">MVVM is not about having a view model object, it’s about having a model-view binding. And you have it in SwiftUI out-of-box.</p><p name="6b75" id="6b75" class="graf graf--p graf-after--p">What makes you think you need a nested view model object in SwiftUI to do MVVM?</p><h4 name="5d9b" id="5d9b" class="graf graf--h4 graf-after--p">The rise of MVVM?</h4><figure name="3eaa" id="3eaa" class="graf graf--figure graf-after--h4"><img class="graf-image" data-image-id="1*6uXi4wKc0y7w2hQcEmbVng.jpeg" data-width="1200" data-height="676" src="https://cdn-images-1.medium.com/max/800/1*6uXi4wKc0y7w2hQcEmbVng.jpeg"><figcaption class="imageCaption">The fall of Skywalker</figcaption></figure><p name="0e1b" id="0e1b" class="graf graf--p graf-after--figure">All evidence to the contrary.</p><p name="d02c" id="d02c" class="graf graf--p graf-after--p">You didn’t have proper support for MVVM in iOS before, and you don’t need MVVM now.</p><p name="c8bb" id="c8bb" class="graf graf--p graf-after--p">At this moment Internet is still full of MVVM nonsense. I hope this article can make top search result to help some developers.</p><p name="343a" id="343a" class="graf graf--p graf-after--p graf--trailing"><strong class="markup--strong markup--p-strong">MVC. I have spoken. This is the way.</strong></p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/7479290d9254"><time class="dt-published" datetime="2019-12-30T09:07:47.607Z">December 30, 2019</time></a>.</p><p><a href="https://medium.com/@swift2931/mvc-in-swiftui-7479290d9254" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

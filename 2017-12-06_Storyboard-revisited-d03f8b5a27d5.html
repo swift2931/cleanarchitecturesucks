@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Storyboard revisited</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Storyboard revisited</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+“Luke Skywalker? I Thought He Was A Myth.”
+</section>
+<section data-field="body" class="e-content">
+<section name="cc77" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="22aa" id="22aa" class="graf graf--h3 graf--leading graf--title">Storyboard revisited</h3><blockquote name="9ff9" id="9ff9" class="graf graf--blockquote graf--startsWithDoubleQuote graf-after--h3">“Luke Skywalker? I Thought He Was A Myth.”</blockquote><h3 name="1375" id="1375" class="graf graf--h3 graf-after--blockquote">Storyboard was a myth</h3><p name="04d1" id="04d1" class="graf graf--p graf-after--h3">Back when I started working as iOS developer, I was told that storyboard is horrible and not suitable for team collaboration.</p><p name="8134" id="8134" class="graf graf--p graf-after--p">OK. It did seem plausible. So what is the alternative? Auto-layout codes?</p><p name="f625" id="f625" class="graf graf--p graf-after--p"><em class="markup--em markup--p-em">The team ended up using manual frame calculation.</em></p><p name="74c3" id="74c3" class="graf graf--p graf-after--p">It was a bug-ridden mess. Calculating frame manually for every component is tedious in itself, and is only worsen by the fact that there was no MVC structure to speak of and no refactoring was ever bothered. Everywhere you looked, there is a line to add subview or set border width, and you often need to scroll through tens of pages of UI codes just to inspect some control logic.</p><p name="b35b" id="b35b" class="graf graf--p graf-after--p">Well, that sounds like your team sucks, not that the frame calculation sucks although using auto-layout might be more up-to-date. You may respond.</p><p name="3fcd" id="3fcd" class="graf graf--p graf-after--p">Yes, that was my thought too, and I began fixing all the architectural problems when that project finished. I was preparing for an auto-layout based development and I noticed the storyboard, sitting in the dark alone.</p><h3 name="e8b6" id="e8b6" class="graf graf--h3 graf-after--p">Why bother using Xcode if not for Interface Builder</h3><p name="61f6" id="61f6" class="graf graf--p graf-after--h3">Xcode, love it or hate it?</p><p name="e055" id="e055" class="graf graf--p graf-after--p">It is surprising to see that many of my colleagues still use the same mindset and work-flow today as if today were in 2010. Barely any third-party framework, except AFNetworking for the sole purpose of detecting network reachability. Everything including UI is written in viewDidLoad(). Frame is calculated by hand and is placed in viewDidLoad() too. Such event took place in 2016. It was a sight to see.</p><p name="a0d4" id="a0d4" class="graf graf--p graf-after--p">At first I thought it might be a time-tested tradition that was proven solid again and again through project after project. This is the canonical way to do iOS, I’m just too noob to understand it; The tale told a story of the storyboard eating junior developer, and auto-layout stealing your children at night.</p><p name="c4fa" id="c4fa" class="graf graf--p graf-after--p">But frame calculation just didn’t make any sense! Any change in the frame of one component, you have to re-calcuate all others affected and it ripples out. It is hard to imagine a senior developer, say 3 ~ 5 years of experience under his belt, would still have to calculate every button and every label. That doesn’t look like a promising career path.</p><p name="d19a" id="d19a" class="graf graf--p graf-after--p">Since interface builder was not used anywhere, and Objective-C was the development language. I might as well use Appcode instead of Xcode.</p><p name="f5d5" id="f5d5" class="graf graf--p graf-after--p">It *<em class="markup--em markup--p-em">clicks</em>*. Appcode just works. It was then that I realized how anti-human Xcode’s UI design was. I want open-in-new-tab to be default when I navigate through files or when I’m debugging via breakpoints. But Xcode in its infinite wisdom denies me even that.</p><p name="0987" id="0987" class="graf graf--p graf-after--p">At this point, I thought I found the solution. Appcode + auto-layout. Time tested again and again through project after project. I spent considerable efforts to introduce auto-layout and appropriate third-party frameworks to the team, and completed the necessary footwork to set everything up and documents and examples.</p><p name="f8e5" id="f8e5" class="graf graf--p graf-after--p">It might have been a happily-ever-after and the story ends, if not for one casual google attempt.</p><h3 name="108d" id="108d" class="graf graf--h3 graf-after--p">The revenge of Storyboard</h3><blockquote name="61ea" id="61ea" class="graf graf--blockquote graf-after--h3">A sith lord?</blockquote><p name="f138" id="f138" class="graf graf--p graf-after--blockquote">It was an attempt to introduce MVC to other team members. I did not think writing-everything-in-viewdidload was in anyway an established design pattern.</p><p name="64bd" id="64bd" class="graf graf--p graf-after--p">Sure that is why one makes a custom view. But in the process I also noticed that it’s tiresome that one must carefully and repeatedly run the app and navigate to the right page to check if UI is correct.</p><p name="7821" id="7821" class="graf graf--p graf-after--p">OK, after some googling, found IBDesignable and XIB to give a preview of auto-layout codes. But XIB did not support prototype cell, which prevents preview of tableview, which is like 70% of the views.</p><p name="d2ff" id="d2ff" class="graf graf--p graf-after--p">OK, so drop XIB, and use storyboard. No wait. If I’m going to use storyboard anyway, why bother writing auto-layout codes first and review in storyboard later with all the overheads of IBDesignable; I might as well just draw it on storyboard.</p><p name="1667" id="1667" class="graf graf--p graf-after--p">I then googled some classic discussion on code vs xib vs storyboard. The result was … inconclusive. A problem was that many articles were dated, and might not be accurate after years of updates. One in particular caught my eyes, it was written a couple years ago and said that he had a succcess in using storyboards in a small team setup.</p><p name="97b3" id="97b3" class="graf graf--p graf-after--p">Well, if some guy could pull this off that many years ago, there is no reason I couldn’t pull this off now given that I’m also in a small team.</p><p name="fb24" id="fb24" class="graf graf--p graf-after--p">At first, it was as frustrating as I remembered when I started learning iOS. But there is a difference between things being difficult and things being unfamiliar. Maybe it was because Xcode updates, or I just <em class="markup--em markup--p-em">git gud, </em>everything started to make sense. It eventually *<em class="markup--em markup--p-em">clicks</em>*.</p><p name="4137" id="4137" class="graf graf--p graf-after--p">It is not that hard, if you avoid this, and do that when that other thing happens; oh and remember to do this after that, you will see that <strong class="markup--strong markup--p-strong">it just works</strong>.</p><p name="b611" id="b611" class="graf graf--p graf-after--p">It sounds like sarcasm. But it is not. Because the pay off is more than worth the investment, at least for my projects. I can understand that why storyboard is a no-go in early days, or even auto-layout in earlier days, but at the time I’m writing this, which is less than a month away from 2018, I don’t see any problems using it in team collaboration, and I am using it in team collaboration.</p><p name="8ab3" id="8ab3" class="graf graf--p graf-after--p">I think 80–20 principle applies well in Cocoa-touch. You do 80% of routine view setup in a custom view or storyboard, and do 20% further setup in viewDidLoad() to account for runtime situations. 80% of the views are just run-of-the-mill that storyboard is more than capable of handling; 20% seems a reasonable ratio that a developer should pay more attention to get it working. If you are working for a project that requires 100% special treatment for views, then by all means don’t use it. But again 80% of developers might not be in that position.</p><p name="167c" id="167c" class="graf graf--p graf-after--p">On the other hand, developer skill level is another factor. My colleagues would write the code <em class="markup--em markup--p-em">as is, </em>i.e.; border width, border color, font size, text color, addSubview… etc; and repeat everything for next component. So when you review a custom view, you would see corner radius is set every 10 lines, and no one bothers to create a RoundButton and go from there.</p><h3 name="6ed4" id="6ed4" class="graf graf--h3 graf-after--p">Is storyboard stronger?</h3><blockquote name="1b98" id="1b98" class="graf graf--blockquote graf-after--h3">No, no, no. Quicker, easier, more seductive.</blockquote><p name="6e99" id="6e99" class="graf graf--p graf-after--blockquote">Thank you master Yoda. I’ll take quicker and easier.</p><p name="c860" id="c860" class="graf graf--p graf-after--p">In current project, which consists of 3 ~ 4 people, I did 80% up of UI and UI-related API. This number of course means nothing without further context.</p><p name="776d" id="776d" class="graf graf--p graf-after--p">But what I can tell you is that, if you plan on doing UI codes, be sure you can do it at minimum roughly the same speed as that of storyboard. Because it is <em class="markup--em markup--p-em">fast</em>. You don’t see Apple promoting you to write more UI code and help you do that in coming Xcode releases. Apple wants you to use storyboard, and put efforts in improving it.</p><p name="f771" id="f771" class="graf graf--p graf-after--p">That does not mean I would hit a wall when a view is special and cannot be dealt with storyboard. I simply change gear, write awesome code-based custom view and move on. The heart of it all is that storyboard is really fast in handling simple views, so fast I don’t bother setting it up in code. I can see result, resolve any and all auto-layout issues in design time; by using storyboard references, I can keep storyboard files to an atomic volume so there’s hardly any merge conflict; and in case it does happen, just use one of the two version without actually getting into resolving the conflict.</p><p name="e619" id="e619" class="graf graf--p graf-after--p">It is embarrassing to see a team starting out to avoid merge conflicts associated with storyboard, and see it taking double the time and ten times of UI codes, (and because it took so much time, there is no time to write tests) then hear it claiming storyboard is bad for team work.</p><p name="647e" id="647e" class="graf graf--p graf-after--p">Take all above with a grain of salt, because obviously I’m not in some elite seasoned developer team. I’m in a team that made storyboard look good.</p><p name="595f" id="595f" class="graf graf--p graf-after--p">But on the other hand, if you were in a third-world country with a suicide squad and planned on minimum coordination and architecture efforts,</p><figure name="9d55" id="9d55" class="graf graf--figure graf-after--p graf--trailing"><img class="graf-image" data-image-id="1*2IkPIGksfU5XpS5nHgoOtQ.gif" data-width="960" data-height="720" src="https://cdn-images-1.medium.com/max/800/1*2IkPIGksfU5XpS5nHgoOtQ.gif"><figcaption class="imageCaption">Force == Storyboard in this context</figcaption></figure></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/d03f8b5a27d5"><time class="dt-published" datetime="2017-12-06T09:29:25.012Z">December 6, 2017</time></a>.</p><p><a href="https://medium.com/@swift2931/fstoryboard-revisited-d03f8b5a27d5" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

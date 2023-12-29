@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Why RxSwift may NOT be the solution you are looking for.</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Why RxSwift may NOT be the solution you are looking for.</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Goodbye World!
+</section>
+<section data-field="body" class="e-content">
+<section name="6145" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="e926" id="e926" class="graf graf--h3 graf--leading graf--title">Why RxSwift may NOT be the solution you are looking for.</h3><figure name="d213" id="d213" class="graf graf--figure graf-after--h3"><img class="graf-image" data-image-id="1*J6gseYykRm0cRJ9xb3G22g.jpeg" data-width="1280" data-height="720" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*J6gseYykRm0cRJ9xb3G22g.jpeg"><figcaption class="imageCaption">Not the solution I’m looking for.</figcaption></figure><h4 name="3ef0" id="3ef0" class="graf graf--h4 graf-after--figure">Goodbye World!</h4><p name="20a7" id="20a7" class="graf graf--p graf-after--h4">Take from the first example in <a href="https://github.com/ReactiveX/RxSwift/blob/master/README.md" data-href="https://github.com/ReactiveX/RxSwift/blob/master/README.md" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">RxSwift</a> github page.</p><figure name="7322" id="7322" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*kJXk7RIUMpYovX75LQs1Sg.gif" data-width="388" data-height="692" src="https://cdn-images-1.medium.com/max/800/1*kJXk7RIUMpYovX75LQs1Sg.gif"></figure><p name="8074" id="8074" class="graf graf--p graf-after--figure">With code snippet as follows:</p><pre name="af34" id="af34" class="graf graf--pre graf-after--p">let searchResults = searchBar.rx.text.orEmpty</pre><pre name="0cca" id="0cca" class="graf graf--pre graf-after--pre">.throttle(0.3, scheduler: MainScheduler.instance)</pre><pre name="420f" id="420f" class="graf graf--pre graf-after--pre">.distinctUntilChanged()</pre><pre name="b797" id="b797" class="graf graf--pre graf-after--pre">.flatMapLatest { query -&gt; Observable&lt;[Repository]&gt; in</pre><pre name="113d" id="113d" class="graf graf--pre graf-after--pre">if query.isEmpty {</pre><pre name="4e16" id="4e16" class="graf graf--pre graf-after--pre">return .just([])</pre><pre name="8b7d" id="8b7d" class="graf graf--pre graf-after--pre">}</pre><pre name="5923" id="5923" class="graf graf--pre graf-after--pre">return searchGitHub(query)</pre><pre name="c2e9" id="c2e9" class="graf graf--pre graf-after--pre">.catchErrorJustReturn([])</pre><pre name="cb70" id="cb70" class="graf graf--pre graf-after--pre">}</pre><pre name="a00b" id="a00b" class="graf graf--pre graf-after--pre">.observeOn(MainScheduler.instance)</pre><h4 name="7492" id="7492" class="graf graf--h4 graf-after--pre">Here is how I do it</h4><figure name="abc3" id="abc3" class="graf graf--figure graf-after--h4"><img class="graf-image" data-image-id="1*jiD0xDWbx76sp9HHEAX6OQ.gif" data-width="530" data-height="486" src="https://cdn-images-1.medium.com/max/800/1*jiD0xDWbx76sp9HHEAX6OQ.gif"></figure><p name="e625" id="e625" class="graf graf--p graf-after--figure">With following code snippet:</p><pre name="7353" id="7353" class="graf graf--pre graf-after--p">rsTf.rxEndEditing ~&lt; action{ (s, vc) in<br>    // some string checking of s omited for clarity</pre><pre name="9c42" id="9c42" class="graf graf--pre graf-after--pre">    api.search.withParam(&quot;q&quot;, s).loadIfNeeded()?.onNewData{ e in</pre><pre name="b145" id="b145" class="graf graf--pre graf-after--pre">        vc.data = e.json[P.items].arrayValue</pre><pre name="3955" id="3955" class="graf graf--pre graf-after--pre">    }</pre><pre name="9dfe" id="9dfe" class="graf graf--pre graf-after--pre">}</pre><p name="9828" id="9828" class="graf graf--p graf-after--pre">whereas rsTf is an UITextField subclass instance that conforms to UITextFieldDelegate. It calls action closure whenever it sees fit using property observer.</p><p name="bd38" id="bd38" class="graf graf--p graf-after--p">rxEndEditing: Rx&lt;String&gt; is a custom event I created to bridge property observer and action closure (with custom operator ~&lt;), and is a property in rsTf. Note that its generic type is the actual message type instead of some abstract “Observable” type.</p><p name="899c" id="899c" class="graf graf--p graf-after--p">data is the dataSource for the tableview, and it triggers tableview reload by another property observer.</p><h4 name="98f3" id="98f3" class="graf graf--h4 graf-after--p">Game over man, Game over.</h4><figure name="ca4c" id="ca4c" class="graf graf--figure graf-after--h4"><img class="graf-image" data-image-id="1*sMudcH-8I5uDyhd4cilL2w.jpeg" data-width="635" data-height="346" src="https://cdn-images-1.medium.com/max/800/1*sMudcH-8I5uDyhd4cilL2w.jpeg"></figure><p name="b4dc" id="b4dc" class="graf graf--p graf-after--figure">I don’t see, at least in this rather trivial example, any way RxSwift can beat my solution.</p><p name="1028" id="1028" class="graf graf--p graf-after--p">I get to use dedicated networking library as it is without worrying about Rx-fy them.</p><p name="0d54" id="0d54" class="graf graf--p graf-after--p">I start with an event source with concrete message type (String as opposed to Observable&lt;Repository&gt;), which allows me to do type-safe functional mapping, and eventually arrive at action sink in which I update VC’s internal state.</p><p name="fc37" id="fc37" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">I don’t need to care any of the stream control bullshit.</strong></p><p name="9e06" id="9e06" class="graf graf--p graf-after--p">I use standard Swift features such as property observers instead of KVO or some other black magic.</p><p name="9d2b" id="9d2b" class="graf graf--p graf-after--p">The framework in total is less than 100 lines.</p><p name="7a33" id="7a33" class="graf graf--p graf-after--p">Developer can create his own event source, use whatever custom UI class, even extend the framework since it is less than 100 lines. Best of all, learning curve is non-existent. I mean, look at above code, create some Rx event source, bridge it over to action closure, and back to usual way of writing imperative codes in VC.</p><p name="5582" id="5582" class="graf graf--p graf-after--p">From my day-to-day experience working as iOS developer, I never need an event source that sends a continuous stream of events for which I have to monitor and take useful parts out of it.</p><p name="7014" id="7014" class="graf graf--p graf-after--p">But from my day-to-day experience working as iOS developer, I need an event source to give me exactly what I wanted when I asked for or expected it. I want no surprises, no needle in haystack.</p><h4 name="85d9" id="85d9" class="graf graf--h4 graf-after--p">Property observer is the key to all of this</h4><figure name="13e1" id="13e1" class="graf graf--figure graf-after--h4"><img class="graf-image" data-image-id="1*xMMj0Wln1VzZQiss31l4OA.gif" data-width="457" data-height="321" src="https://cdn-images-1.medium.com/max/800/1*xMMj0Wln1VzZQiss31l4OA.gif"></figure><p name="aeeb" id="aeeb" class="graf graf--p graf-after--figure">It boggles mind that when I search RxSwift repo, I can’t find the clear usage of property observer. Either it is buried in some mystery box or not used at all. If it were the latter, how do you call a Swift reactive framework without using Swift’s most prominent reactive feature?</p><p name="fdd8" id="fdd8" class="graf graf--p graf-after--p">But keep in mind that I’m not an expert on RxSwift, so take it with a grain of salt.</p><h4 name="ab75" id="ab75" class="graf graf--h4 graf-after--p">Bottom line</h4><p name="9bd6" id="9bd6" class="graf graf--p graf-after--h4">I don’t think RxSwift is the pinnacle of iOS Swift development. From what I’ve learned so far, RxSwift is closer to being near the pinnacle of over-enginering. (near the pinnacle, because VIPER takes the throne of over-engineering)</p><p name="619e" id="619e" class="graf graf--p graf-after--p">You can easily find materials on why and how to use RxSwift. But it is a lot harder to find counter arguments on why you should not use it other than its difficulty.</p><p name="7bf9" id="7bf9" class="graf graf--p graf-after--p graf--trailing">I’m here to tell you, from my experience, RxSwift may not be the solution you are looking for.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/705fafdae6a2"><time class="dt-published" datetime="2018-09-03T10:27:40.411Z">September 3, 2018</time></a>.</p><p><a href="https://medium.com/@swift2931/why-rxswift-may-not-be-the-solution-you-are-looking-for-705fafdae6a2" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

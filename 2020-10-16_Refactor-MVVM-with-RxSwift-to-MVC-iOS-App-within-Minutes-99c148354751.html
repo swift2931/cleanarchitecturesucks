@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Refactor MVVM with RxSwift to MVC iOS App within Minutes</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Refactor MVVM with RxSwift to MVC iOS App within Minutes</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Aren’t you tired of massive view model with complex dependencies?
+</section>
+<section data-field="body" class="e-content">
+<section name="4149" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="3bf3" id="3bf3" class="graf graf--h3 graf--leading graf--title">Refactor MVVM with RxSwift to MVC iOS App within Minutes</h3><p name="68e5" id="68e5" class="graf graf--p graf-after--h3">Aren’t you tired of massive view model with complex dependencies?</p><figure name="cf1f" id="cf1f" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*ploG8z_gmh9XDWM5pPxarw.png" data-width="956" data-height="810" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*ploG8z_gmh9XDWM5pPxarw.png"><figcaption class="imageCaption">If “so powerful” MVVM + RxSwift are, why not compare with Apple MVC?</figcaption></figure><h4 name="0efe" id="0efe" class="graf graf--h4 graf-after--figure">Introducing MVC</h4><p name="b8ee" id="b8ee" class="graf graf--p graf-after--h4">Nothing fancy. Just follow Apple SDK, but with some refactoring in mind.</p><p name="a049" id="a049" class="graf graf--p graf-after--p">Now let’s refactor the supposed-to-be refactor of MVC: <a href="https://medium.com/@alfianlosari/refactor-mvc-ios-app-to-mvvm-with-rxswift-in-minutes-alfian-losari-ec7905f946f4" data-href="https://medium.com/@alfianlosari/refactor-mvc-ios-app-to-mvvm-with-rxswift-in-minutes-alfian-losari-ec7905f946f4" class="markup--anchor markup--p-anchor" target="_blank">Refactor MVC iOS App to MVVM with RxSwift in Minutes</a></p><p name="ff41" id="ff41" class="graf graf--p graf-after--p">First let’s get a broad overview of the example app. It’s a tableview that displays a list fetched from networking.</p><p name="d74a" id="d74a" class="graf graf--p graf-after--p">OK. Let’s see his fetch implementation:</p><pre name="8d36" id="8d36" class="graf graf--pre graf-after--p"><strong class="markup--strong markup--pre-strong">class</strong> MovieListViewViewModel {    <br>    ...<br> <br>    <strong class="markup--strong markup--pre-strong">init</strong>(endpoint: Driver&lt;Endpoint&gt;, movieService: MovieService) {<br>        <strong class="markup--strong markup--pre-strong">self</strong>.movieService = movieService<br>        endpoint<br>            .drive(onNext: { [weak <strong class="markup--strong markup--pre-strong">self</strong>] (endpoint) <strong class="markup--strong markup--pre-strong">in<br>                self</strong>?.fetchMovies(endpoint: endpoint)<br>            }).disposed(by: disposeBag)<br>    }<strong class="markup--strong markup--pre-strong">    <br>    func</strong> viewModelForMovie(at index: Int) -&gt; MovieViewViewModel? {<br>        <strong class="markup--strong markup--pre-strong">guard</strong> index &lt; _movies.value.count <strong class="markup--strong markup--pre-strong">else</strong> {<br>            <strong class="markup--strong markup--pre-strong">return</strong> <strong class="markup--strong markup--pre-strong">nil<br>        </strong>}<br>        <strong class="markup--strong markup--pre-strong">return</strong> MovieViewViewModel(movie: _movies.value[index])<br>    }<strong class="markup--strong markup--pre-strong">    <br>    func</strong> fetchMovies(endpoint: Endpoint) {<br>        <strong class="markup--strong markup--pre-strong">self</strong>._movies.accept([])<br>        <strong class="markup--strong markup--pre-strong">self</strong>._isFetching.accept(<strong class="markup--strong markup--pre-strong">true</strong>)<br>        <strong class="markup--strong markup--pre-strong">self</strong>._error.accept(<strong class="markup--strong markup--pre-strong">nil</strong>)<br>        movieService.fetchMovies(from: endpoint, params: <strong class="markup--strong markup--pre-strong">nil</strong>, <br>successHandler: {[weak <strong class="markup--strong markup--pre-strong">self</strong>] (response) <strong class="markup--strong markup--pre-strong">in<br>            self</strong>?._isFetching.accept(<strong class="markup--strong markup--pre-strong">false</strong>)<br>            <strong class="markup--strong markup--pre-strong">self</strong>?._movies.accept(response.results)<br>        }) { [weak <strong class="markup--strong markup--pre-strong">self</strong>] (error) <strong class="markup--strong markup--pre-strong">in<br>            self</strong>?._isFetching.accept(<strong class="markup--strong markup--pre-strong">false</strong>)<br>            <strong class="markup--strong markup--pre-strong">self</strong>?._error.accept(error.localizedDescription)<br>        }<br>    }<br>}</pre><p name="e612" id="e612" class="graf graf--p graf-after--pre">Let’s break down all of it into several main points:</p><ol class="postList"><li name="84ba" id="84ba" class="graf graf--li graf-after--p">Coupling</li></ol><p name="b956" id="b956" class="graf graf--p graf-after--li">View model is coupled with networking. Your view model is now a model with hidden state and side effects associated with networking. You may argue that this is the whole of refactoring with view model. But as you would see, there are far simpler ways.</p><p name="43df" id="43df" class="graf graf--p graf-after--p">2. Over-generalization</p><p name="2a20" id="2a20" class="graf graf--p graf-after--p">Endpoint in restful sense should be treated as a constant, rather than variable. Driver parameter is moronic, because you ever only need one. You are making things complicated than it needs to be. It’s extra moronic if the attempt is to prepare the view model to handle all kinds of endpoints and driver combination. You never need them.</p><p name="21f2" id="21f2" class="graf graf--p graf-after--p">3. Hidden state</p><p name="27e1" id="27e1" class="graf graf--p graf-after--p">I don’t see the name “Controller” in the term “view model”. If anything, it should be called “view state”, which is still ambiguous because it can refer to view properties or control states like networking. So either it becomes a proxy to access view properties, which is redundant glue code or it becomes a controller object disguised as a “model”. Either way it’s retarded.</p><p name="4678" id="4678" class="graf graf--p graf-after--p">4. RxSwift</p><p name="6105" id="6105" class="graf graf--p graf-after--p">I don’t even want to go into it. Let’s just say 99% of the time you don’t need it or you can find alternative. A JSON library is what you really need.</p><p name="e8b2" id="e8b2" class="graf graf--p graf-after--p">How do you refactor this mess with Apple MVC?</p><p name="cc7b" id="cc7b" class="graf graf--p graf-after--p">Remove view model, get rid of RxSwift. Use dedicated network service object. Wrap endpoint to be a resource type for single-source-of-truth. E.g.;</p><pre name="eded" id="eded" class="graf graf--pre graf-after--p">var json = JSON() { didSet { updateUI() }<br>var endpoint = Resource(&quot;URL&quot;)</pre><pre name="26e0" id="26e0" class="graf graf--pre graf-after--pre">...</pre><pre name="60cd" id="60cd" class="graf graf--pre graf-after--pre">endpoint.get().onSuccess {json in self.json = json}</pre><p name="78f9" id="78f9" class="graf graf--p graf-after--pre">You should be able to hand-craft JSON and Resource type from what it is supposed to do. I do it under 500 lines.</p><p name="7951" id="7951" class="graf graf--p graf-after--p">If you can’t, you really should not play around with RxSwift. Learn to walk before you run.</p><p name="46b6" id="46b6" class="graf graf--p graf-after--p">And in case you didn’t notice, we are done. The rest is to assign delegate and datasource for tableview, and implement respective protocols.</p><p name="5e60" id="5e60" class="graf graf--p graf-after--p">Configure tableview cell in usual SDK way. View model is retarded. Use customized cell if needed. I don’t know what drug MVVM devs are smoking, “easier to test” my ass, you know if you don’t have view model then there’s one fewer thing to test right? You can reuse custom cell too.</p><p name="d810" id="d810" class="graf graf--p graf-after--p">Readers are encouraged to construct a mental picture of what we’ve done so far and compare with that in the linked article above.</p><p name="1f83" id="1f83" class="graf graf--p graf-after--p">Now tell me,</p><p name="c62e" id="c62e" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Do you realize how much boilerplate / generalization you don’t need?</strong></p><p name="8243" id="8243" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Do you realize you don’t need to observe shit and it’s far simpler?</strong></p><p name="f0dd" id="f0dd" class="graf graf--p graf-after--p">And tell me,</p><p name="e6ae" id="e6ae" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Do you think you have massive view model problem?</strong></p><p name="c422" id="c422" class="graf graf--p graf-after--p">I’m going to draw conclusion by modifying his conclusion.</p><h4 name="b175" id="b175" class="graf graf--h4 graf-after--p">Conclusion</h4><h3 name="ae44" id="ae44" class="graf graf--h3 graf-after--h4">Conclusion</h3><blockquote name="a84e" id="a84e" class="graf graf--blockquote graf-after--h3">Building an app with MVVM as an architecture is <strong class="markup--strong markup--blockquote-strong">n̶o̶t̶ </strong>really that complex. In the long run, ViewModel really helps the View Controller become more l̶i̶g̶h̶t̶w̶e̶i̶g̶h̶t̶ <strong class="markup--strong markup--blockquote-strong">massive </strong>and encapsulate our data transformation. T̶e̶s̶t̶i̶n̶g̶ ̶o̶n̶ ̶t̶h̶e̶ ̶V̶i̶e̶w̶ ̶M̶o̶d̶e̶l̶ ̶i̶s̶ ̶a̶l̶s̶o̶ ̶p̶r̶e̶t̶t̶y̶ ̶s̶i̶m̶p̶l̶e̶ ̶a̶n̶d̶ ̶s̶t̶r̶a̶i̶g̶h̶t̶f̶o̶r̶w̶a̶r̶d̶ ̶w̶i̶t̶h̶o̶u̶t̶ ̶w̶o̶r̶r̶y̶i̶n̶g̶ ̶a̶b̶o̶u̶t̶ ̶t̶h̶e̶ ̶V̶i̶e̶w̶ ̶C̶o̶n̶t̶r̶o̶l̶l̶e̶r̶.̶ <strong class="markup--strong markup--blockquote-strong">If you can test the massive view model coupled with networking and Rx-observer, you can test view controller too.</strong></blockquote><blockquote name="1178" id="1178" class="graf graf--blockquote graf-after--blockquote graf--trailing">Although RxSwift can become quite complex and has steep learning curve for developers that has just exposed to reactive programming, it is also has powerful feature like throttle and many more to explore <strong class="markup--strong markup--blockquote-strong">which you don’t need most of the tim</strong>e. Next time, let’s explore about how to perform unit testing on V̶i̶e̶w̶ ̶M̶o̶d̶e̶l̶ ̶w̶i̶t̶h̶ ̶R̶x̶S̶w̶i̶f̶t̶’̶s̶ ̶R̶x̶T̶e̶s̶t̶ ̶&amp;̶ ̶R̶x̶B̶l̶o̶c̶k̶i̶n̶g̶g view controller using POP. So until then, let’s keep the lifelong learning, keep growing and building. Happy Swifting 😋.</blockquote></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/99c148354751"><time class="dt-published" datetime="2020-10-16T11:10:54.884Z">October 16, 2020</time></a>.</p><p><a href="https://medium.com/@swift2931/refactor-mvvm-with-rxswift-to-mvc-ios-app-within-minutes-99c148354751" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

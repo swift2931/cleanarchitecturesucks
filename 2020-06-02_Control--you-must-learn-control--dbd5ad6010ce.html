@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Control, you must learn control!</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Control, you must learn control!</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Why MVVM, VIPER, RIB all failed at Control
+</section>
+<section data-field="body" class="e-content">
+<section name="ed75" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="f464" id="f464" class="graf graf--h3 graf--leading graf--title">Control, you must learn control!</h3><p name="fc81" id="fc81" class="graf graf--p graf-after--h3">Why MVVM, VIPER, RIB all failed at Control</p><figure name="d2ae" id="d2ae" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*vbKhEq5duH2ASxIxIUL7Uw.jpeg" data-width="1536" data-height="864" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*vbKhEq5duH2ASxIxIUL7Uw.jpeg"><figcaption class="imageCaption">Intelligent beings are we, not these MVVM retards</figcaption></figure><h4 name="64d7" id="64d7" class="graf graf--h4 graf-after--figure">Your feelings betrayed you, RIB</h4><p name="e411" id="e411" class="graf graf--p graf-after--h4">This is what RIB says in their github:</p><blockquote name="5e52" id="5e52" class="graf graf--blockquote graf-after--p">Business logic drives the app, not the view tree. Unlike with MV*/VIPER, a RIB does not have to have a view. This means that the app hierarchy is driven by the business logic, not the view tree.</blockquote><p name="b8e8" id="b8e8" class="graf graf--p graf-after--blockquote">So you need more <em class="markup--em markup--p-em">Control</em>. This completes an arc from MVVM to VIPER to RIB. That arc is called “we need more control”.</p><p name="f5ed" id="f5ed" class="graf graf--p graf-after--p">MVVM uses ViewModel with states. But not all states are direct view-related states, it’s called business logic rather than view logic for a reason. MVVM devs can claim ViewModel is not Control when it contains all states that would otherwise reside in view controller with a straight face.</p><p name="9af1" id="9af1" class="graf graf--p graf-after--p">VIPER brings back explicit control, but splits it in multiple specific roles (Interactor, Presenter, Router). VIPER unfortunately got crushed by the sheer amount of overheads it introduces.</p><p name="9abf" id="9abf" class="graf graf--p graf-after--p">RIB for some reason decides to be crushed as well. The soy boys who call them iOS devs at Uber analyze the problem and decide that they can improve upon VIPER by introducing <strong class="markup--strong markup--p-strong">even more Control</strong>.</p><p name="9534" id="9534" class="graf graf--p graf-after--p">This is a story about how you think ViewModel can solve shit, and build around it, and find out that it doesn’t solve shit. In fact who gives a shit, make it simple and throw away, you need more control to contain the increasing complexity of business logic. You need so much control that you might as well have your app hierarchy built around it.</p><p name="6f0c" id="6f0c" class="graf graf--p graf-after--p">However this story does not have a happy ending. They all failed spectacularly miserably at Control.</p><h4 name="c85f" id="c85f" class="graf graf--h4 graf-after--p">Catch 22</h4><blockquote name="ac55" id="ac55" class="graf graf--pullquote graf-after--h4">Those who don’t write massive view controller have no need for these shit, and those who do are doomed to repeat it no matter what they use.</blockquote><p name="93d0" id="93d0" class="graf graf--p graf-after--pullquote">If you look at the propaganda of these design patterns / framework, they all claim they are solving massive view controller problem (MVCP).</p><p name="0c8a" id="0c8a" class="graf graf--p graf-after--p">Did it ever occur to you that, if having some extra objects to store shit is enough to solve MVCP, you wouldn’t have MVCP in the first place.</p><p name="f638" id="f638" class="graf graf--p graf-after--p">There are people that can refactor / arch the shit out of MVC.</p><p name="c812" id="c812" class="graf graf--p graf-after--p">Asking them how should be far easier than learning some bullshit RIB, which is based on VIPER, has mandatory RxSwift requirement, state management by inheritance hierarchy, and require heavy code-gen.</p><h4 name="c3cb" id="c3cb" class="graf graf--h4 graf-after--p">I don’t believe it</h4><p name="5c9e" id="5c9e" class="graf graf--p graf-after--h4">That, is why you fail.</p><p name="ef1b" id="ef1b" class="graf graf--p graf-after--p">Let’s first analyze why these shits fail.</p><p name="955c" id="955c" class="graf graf--p graf-after--p">MVVM is obvious, ViewModel is just controller that pretends to be harmless presenter. It’s MVC with extra steps. It gives you no guidelines on how you should structure Control. Again, if refactoring out control logic to some object can solve MVCP, you wouldn’t have MVCP in the first place. There’s nothing preventing you from writing massive view model either.</p><p name="5fa2" id="5fa2" class="graf graf--p graf-after--p">VIPER on the other hand, gives you guidelines, perhaps too many guidelines. Having clear-cut roles is nice, but it isn’t game-changing. Any half competent dev would already have a similar role assignment in their codes. By enforcing these roles and guidelines, the structure loses flexibility which hinders refactoring. When you have to repeat the same setup code, you are most likely doing it wrong, and need to stop to rethink your architecture.</p><p name="e58a" id="e58a" class="graf graf--p graf-after--p">VIPER devs think they can overcome it with, ironically, brute force code-gen.</p><p name="34b4" id="34b4" class="graf graf--p graf-after--p">Interactor, presenter, and router concepts are not earth-shattering, ground-breaking, mind-blowing constructs previously unheard-of and are supported by Swift and SDK. In fact, quite the opposite. It just gives names to common refactoring patterns, then awkwardly stitch them together and call it clean architecture. The legendary amount of boilerplate required should tell you how well it enjoys SDK and language support.</p><p name="7265" id="7265" class="graf graf--p graf-after--p">We haven’t even got to the worst part.</p><p name="7f8b" id="7f8b" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">VIPER does not tell you how you should write an interactor!</strong></p><p name="61bf" id="61bf" class="graf graf--p graf-after--p">What’s saving you from writing a massive interactor? You know presenter should be kept simple, and router deals with navigation. The rest goes to interactor. It’s a real possibility that you have complex logic in interactor.</p><p name="f38a" id="f38a" class="graf graf--p graf-after--p">So after all of that shit, nothing is solved, yet clean architecture is claimed. This is in consistent with the proud tradition of MVVM.</p><p name="0773" id="0773" class="graf graf--p graf-after--p">Finally, let’s look at RIB.</p><p name="b04e" id="b04e" class="graf graf--p graf-after--p">A control based hierarchy. It might be good?</p><p name="e1a5" id="e1a5" class="graf graf--p graf-after--p">Inheritance. No it can’t be good. I’ll tell you as a fact that one of the secrets of not having MVCP is to NOT allow inheritance of view controller.</p><p name="32e4" id="32e4" class="graf graf--p graf-after--p">It of course claims to be scalable, clean, solving MVCP … etc, as the tradition.</p><p name="9484" id="9484" class="graf graf--p graf-after--p">Not only does it NOT have support of Swift and SDK (from sheer amount of boilerplate), it straight up copy-paste from Java, thus suppressing Swift features.</p><p name="2734" id="2734" class="graf graf--p graf-after--p">It even has the audacity to have mandatory dependency on RxSwift, so RIB isn’t even self contained.</p><p name="6130" id="6130" class="graf graf--p graf-after--p">And the worst of all, it still does not prevent you from writing a massive interactor.</p><p name="4804" id="4804" class="graf graf--p graf-after--p">I have to give props to soy boys at Uber. They nailed it. Everything in RIB is designed wrong.</p><h4 name="3940" id="3940" class="graf graf--h4 graf-after--p">Mourn them do not, miss them do not</h4><p name="09ae" id="09ae" class="graf graf--p graf-after--h4">For they are literal shits.</p><p name="31ad" id="31ad" class="graf graf--p graf-after--p">If anything, SwiftUI should give you an insight on how things can be done with language features and SDK support (such as binding).</p><p name="ffa9" id="ffa9" class="graf graf--p graf-after--p">I’ll leave hints as to how you should do Control for now, because I have to go to sleep now.</p><p name="3d57" id="3d57" class="graf graf--p graf-after--p">POP, no extra objects, property observer.</p><p name="b5b5" id="b5b5" class="graf graf--p graf-after--p">Have you heard the tragedies of RIB the unwise?</p><p name="a368" id="a368" class="graf graf--p graf-after--p graf--trailing">These are not the stories shity developers would tell you…</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/dbd5ad6010ce"><time class="dt-published" datetime="2020-06-02T17:31:45.554Z">June 2, 2020</time></a>.</p><p><a href="https://medium.com/@swift2931/control-you-must-learn-control-dbd5ad6010ce" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

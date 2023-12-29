@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Redux is a state of mind</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Redux is a state of mind</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+@State var store: Mind
+</section>
+<section data-field="body" class="e-content">
+<section name="dbb2" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="bfe1" id="bfe1" class="graf graf--h3 graf--leading graf--title">Redux is a state of mind</h3><h4 name="e6e7" id="e6e7" class="graf graf--h4 graf-after--h3 graf--subtitle">@State var store: Mind</h4><figure name="c5a4" id="c5a4" class="graf graf--figure graf-after--h4"><img class="graf-image" data-image-id="1*ZDlABScxq0uKU6coEj6Bww.jpeg" data-width="500" data-height="388" data-is-featured="true" src="https://cdn-images-1.medium.com/max/800/1*ZDlABScxq0uKU6coEj6Bww.jpeg"><figcaption class="imageCaption">ELF, as in Elm-Flow</figcaption></figure><h4 name="1bdf" id="1bdf" class="graf graf--h4 graf-after--figure">POP Redux</h4><p name="b490" id="b490" class="graf graf--p graf-after--h4">You’ve heard Protoocol-Oriented Programming, and you’ve heard Redux.</p><p name="c419" id="c419" class="graf graf--p graf-after--p">Have you ever wondered what it might be like to do Redux with POP?</p><p name="e4bd" id="e4bd" class="graf graf--p graf-after--p">In fact, you do POP by <em class="markup--em markup--p-em">thinking in Redux.</em></p><p name="aad9" id="aad9" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">It’s a state of mind.</strong></p><p name="3ee6" id="3ee6" class="graf graf--p graf-after--p">With the introduction of SwiftUI, this technique is pushed to new heights.</p><pre name="1378" id="1378" class="graf graf--pre graf-after--p">extension Redux {<br>    func helloWorld() {<br>        effect(action.map {$0.hello = &quot;world&quot;})<br>    }<br>}</pre><p name="1f8a" id="1f8a" class="graf graf--p graf-after--pre">Now I’ll go into details on why I think this is how you would do Redux with SwiftUI.</p><figure name="9d28" id="9d28" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*WtdTW6NgZ1GeRePAIt54lg.jpeg" data-width="300" data-height="154" src="https://cdn-images-1.medium.com/max/800/1*WtdTW6NgZ1GeRePAIt54lg.jpeg"><figcaption class="imageCaption">Now this is pod racing</figcaption></figure><h4 name="3c6b" id="3c6b" class="graf graf--h4 graf-after--figure">Mutations make an app</h4><p name="d368" id="d368" class="graf graf--p graf-after--h4">Clearly, if your app is made of constants, it would be trivial and boring.</p><p name="ed16" id="ed16" class="graf graf--p graf-after--p">Every mutation you make is an <strong class="markup--strong markup--p-strong">action</strong>, and every action has an <strong class="markup--strong markup--p-strong">effect </strong>on some<strong class="markup--strong markup--p-strong"> states.</strong></p><h4 name="9a33" id="9a33" class="graf graf--h4 graf-after--p">State, Action, and Effect</h4><p name="a432" id="a432" class="graf graf--p graf-after--h4">Put it in protocol:</p><pre name="a03a" id="a03a" class="graf graf--pre graf-after--p">protocol Redux {<br>    associatedtype Store<br>    var binding: Binding&lt;Store&gt; {get}    <br>    var store: Store {get}<br>    var action: Action&lt;Store&gt; {get}<br>    func effect(desc: String, _ action: Action&lt;Store&gt;)<br>}</pre><p name="3b4d" id="3b4d" class="graf graf--p graf-after--pre">There’s a lot of things going on in these few lines. Let’s unpack.</p><p name="0037" id="0037" class="graf graf--p graf-after--p">First I want a Redux protocol, so whoever conforms it has State, Action, and Effect as building blocks.</p><p name="a884" id="a884" class="graf graf--p graf-after--p">Store would represent whatever model type to store your state.</p><p name="5cc6" id="5cc6" class="graf graf--p graf-after--p">Action&lt;Store&gt; would represent whatever actions you define.</p><p name="c28e" id="c28e" class="graf graf--p graf-after--p">The effect function takes a description string and an action as parameters. This is where your action takes effect, i.e; changes states.</p><p name="19f3" id="19f3" class="graf graf--p graf-after--p">Binding is due to SwiftUI, in which you can use @State. You can only mutate a @State variable via its binding, which can only obtained inside the struct that conforms View. So you have to require it in protocol and expose binding on conformance.</p><h4 name="f967" id="f967" class="graf graf--h4 graf-after--p">This is it</h4><p name="e70b" id="e70b" class="graf graf--p graf-after--h4">It is done. This is all you need.</p><p name="c29a" id="c29a" class="graf graf--p graf-after--p">Implement Action however you deem fit for teamwork. Make it print debug message, log actions, and act as API. The point is that every mutation goes through pre-defined action, and you can monitor all state changes in effect function.</p><p name="baa5" id="baa5" class="graf graf--p graf-after--p">SwiftUI re-renders body whenever @State changes, so you don’t worry about view updates.</p><h4 name="2901" id="2901" class="graf graf--h4 graf-after--p">Redux is a state of mind</h4><p name="815e" id="815e" class="graf graf--p graf-after--h4">You don’t rely on third-party framework to tell you how to do Redux.</p><p name="3881" id="3881" class="graf graf--p graf-after--p">You learn what Redux is about, and structure your app to conform to it.</p><h4 name="d5d2" id="d5d2" class="graf graf--h4 graf-after--p">Elm Flow</h4><p name="48c8" id="48c8" class="graf graf--p graf-after--h4">When I started to survey ReSwift a couple years ago, I found it … <em class="markup--em markup--p-em">awkward</em>.</p><p name="2bbb" id="2bbb" class="graf graf--p graf-after--p">It seemed like a port from javascript. In other words, it may be <em class="markup--em markup--p-em">contaminated </em>by javascript.</p><p name="e322" id="e322" class="graf graf--p graf-after--p">So I traced back to Redux, and further back to Elm architecture which inspired it.</p><p name="0d42" id="0d42" class="graf graf--p graf-after--p">Elm itself is a <em class="markup--em markup--p-em">functional </em>language. Not FRP bullshit, <em class="markup--em markup--p-em">functional</em>. It does not even have constant time array access. You’d spend the whole day just trying to make it compile, but once it compiles it works flawlessly.</p><p name="8f7d" id="8f7d" class="graf graf--p graf-after--p">Swift has similar functional paradigms that make it a even better candidate for Elm architecture. Better than Elm itself? Yes. Because<em class="markup--em markup--p-em"> it can be functional, but not has to be. Best of both worlds.</em></p><p name="9dfe" id="9dfe" class="graf graf--p graf-after--p">With SwiftUI and Swift 5.1, the circle is now complete. You can pull Elm architecture in Swift-y way. The above protocol describes such flow, I call it Elm-Flow. All it does is to help you focus on two things, action and its effect on state. If you already have Redux mindset, this is but a refactor of what you would normally do. As I said, it is a state of mind.</p><h4 name="dbcb" id="dbcb" class="graf graf--h4 graf-after--p">Comparison with ReSwift</h4><p name="914e" id="914e" class="graf graf--p graf-after--h4">No global store, no subscription, no onNewState, no reducer, no dispatch.</p><p name="c71f" id="c71f" class="graf graf--p graf-after--p">But bear it mind, ReSwift does not take SwiftUI into consideration.</p><p name="ae54" id="ae54" class="graf graf--p graf-after--p">On the other hand, ReSwift or Redux in general seems to build around global store. This is a concept I found most difficult to work with in iOS environment.</p><p name="a336" id="a336" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">It has to go</strong>. There’s no reason not to have local state. SwiftUI even provides @State to manage it. Your state should leverage that, period.</p><h4 name="0661" id="0661" class="graf graf--h4 graf-after--p">Implementation</h4><p name="68ad" id="68ad" class="graf graf--p graf-after--h4">Less than 100 lines with protocol extension. No class is needed.</p><blockquote name="228b" id="228b" class="graf graf--blockquote graf-after--p">What are you trying to tell me? That I don’t need classes?</blockquote><figure name="32fb" id="32fb" class="graf graf--figure graf-after--blockquote"><img class="graf-image" data-image-id="1*4jZDXwtHQhbpVFKOPmj3Qw.jpeg" data-width="1280" data-height="720" src="https://cdn-images-1.medium.com/max/800/1*4jZDXwtHQhbpVFKOPmj3Qw.jpeg"></figure><p name="efd2" id="efd2" class="graf graf--p graf-after--figure">No. I’m saying when you are ready, you don’t have to.</p><p name="37b8" id="37b8" class="graf graf--p graf-after--p">I’d like to leave this as an exercise. Interested readers should try to implement this with Xcode 11. There’s a compiler magic that makes <em class="markup--em markup--p-em">action implementation </em>insanely cool. It’s like watching <em class="markup--em markup--p-em">empire strikes back </em>for the first time. You really need to find out by yourself to appreciate it.</p><p name="a9af" id="a9af" class="graf graf--p graf-after--p">The Elm-Flow, in my current implementation, would look like this</p><pre name="e0c2" id="e0c2" class="graf graf--pre graf-after--p">struct ListView: View, Redux {<br>    @State var store = Mind()<br>    var binding: Binding&lt;Mind&gt; {$store}<br>    var body: some View {<br>          Text(store.hello)<br>          // self.helloWorld()<br>    }<br>}</pre><p name="9b9c" id="9b9c" class="graf graf--p graf-after--pre">But this is just regular target action?</p><p name="317d" id="317d" class="graf graf--p graf-after--p">It depends on what you expect Redux to do for you and your implementation.</p><p name="f935" id="f935" class="graf graf--p graf-after--p">The way I look at it, actions are only allowed in protocol. Each action should have as few effects as possible. You can map(mutate) action however you like, but it does not take effect until passed to effect function, which takes #function as first parameter to provider caller info for debug. Action also uses keypath to provide debug info up to which state in store is mutated. Action and effect is clear and easy to inspect. Store shared between views can conform to Redux protocol the same way except that it may be a class, and be imported by @EnvironmentObject. In fact, anything that has internal state can choose to conform to specific Redux protocol, including Router. (you can easily replace VIPER this way)</p><h4 name="1ea0" id="1ea0" class="graf graf--h4 graf-after--p">Conclusion</h4><p name="d03e" id="d03e" class="graf graf--p graf-after--h4">Swift is evolving. SwiftUI and Combine fundamentally changes SDK.</p><p name="3452" id="3452" class="graf graf--p graf-after--p">MVVM, RxSwift, ReSwift, VIPER, they are all dead now.</p><p name="9a79" id="9a79" class="graf graf--p graf-after--p">The way ahead is clear. POP, functional, binding, struct over class, composition over inheritance. This is all but confirmed in Xcode 11.</p><p name="c7a8" id="c7a8" class="graf graf--p graf-after--p">I believe the missing piece is this Elm-Flow. It fits perfectly as a composition of all these features. And the best of all, it’s a state of mind, much like dependency injection, and does not depend on particular framework.</p><p name="ed0c" id="ed0c" class="graf graf--p graf-after--p graf--trailing">Mark my words, and remember you see it here first.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/ad4f58c032e7"><time class="dt-published" datetime="2019-09-17T16:30:11.887Z">September 17, 2019</time></a>.</p><p><a href="https://medium.com/@swift2931/redux-is-a-state-of-mind-ad4f58c032e7" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>

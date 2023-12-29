@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>MVC, MVVM and RxSwift walk into a bar</title><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle],
+      section[data-field=description] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">MVC, MVVM and RxSwift walk into a bar</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+A comparison of iOS developer mindset
+</section>
+<section data-field="body" class="e-content">
+<section name="f1f1" class="section section--body section--first section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="d645" id="d645" class="graf graf--h3 graf--leading graf--title">MVC, MVVM and RxSwift walk into a bar</h3><p name="a57f" id="a57f" class="graf graf--p graf-after--h3">A comparison of iOS developer mindset</p><figure name="9013" id="9013" class="graf graf--figure graf-after--p"><img class="graf-image" data-image-id="1*r0PMcYr1BI7ptEeKaUFsRw.jpeg" data-width="344" data-height="146" src="https://cdn-images-1.medium.com/max/800/1*r0PMcYr1BI7ptEeKaUFsRw.jpeg"><figcaption class="imageCaption">You want to go home and rethink your architecture</figcaption></figure><h4 name="9a73" id="9a73" class="graf graf--h4 graf-after--figure">MVC walks into a bar</h4><p name="ffbf" id="ffbf" class="graf graf--p graf-after--h4">He asks for a drink. He waits for a while. He takes some time finishing the drink, pays up, then leaves.</p><h4 name="1c39" id="1c39" class="graf graf--h4 graf-after--p">MVVM walks into a bar</h4><p name="0a18" id="0a18" class="graf graf--p graf-after--h4">He says,</p><blockquote name="9f5c" id="9f5c" class="graf graf--blockquote graf-after--p">Sir, you are experiencing massive view controller problem.</blockquote><p name="5a74" id="5a74" class="graf graf--p graf-after--blockquote">I need you to build a bar outside of the building, and move all your alcohol there. But people still have to be seated here, I’ll outline some protocols for you to retrieve/re-supply alcohols.</p><p name="6467" id="6467" class="graf graf--p graf-after--p">This is intended for you to run the bar more easily, and it’s well documented on Internet. I know you may wonder why this might help you, but it has a proven track record in other types of business, despite having different business model.</p><p name="7f50" id="7f50" class="graf graf--p graf-after--p">The details steps of how you should proceed from here is up to you, and this flexibility is what makes it great. The modular design should make routine maintenance much easier.</p><p name="9bc0" id="9bc0" class="graf graf--p graf-after--p">Trust me, I saw it on Internet.</p><h4 name="0b19" id="0b19" class="graf graf--h4 graf-after--p">RxSwift walks into a bar</h4><p name="cb60" id="cb60" class="graf graf--p graf-after--h4">He looks around. Then says,</p><blockquote name="3503" id="3503" class="graf graf--blockquote graf-after--p">Sir, your alcohol delivery is what we called “delegation and callbacks”, and it’s bad. Let me introduce you this upgraded observer pattern.</blockquote><blockquote name="f54f" id="f54f" class="graf graf--blockquote graf-after--blockquote">You see, you giving me a drink is an event. What we need is to assume everything is a stream of events.</blockquote><p name="269a" id="269a" class="graf graf--p graf--startsWithDoubleQuote graf-after--blockquote">“Wait, what? why!”, Bartender asks, after recovering from initial shocks.</p><p name="38ea" id="38ea" class="graf graf--p graf--startsWithDoubleQuote graf-after--p">“Here, just take it and go, it’s on the house”, Bartender fills a beer and hands it to him.</p><p name="1544" id="1544" class="graf graf--p graf--startsWithDoubleQuote graf-after--p">“I can’t take it”, he said.</p><blockquote name="730c" id="730c" class="graf graf--blockquote graf-after--p">You have to pass the beer though an observer. And I have to subscribe to your events.</blockquote><p name="e521" id="e521" class="graf graf--p graf--startsWithDoubleQuote graf-after--blockquote">“What!? what’s wrong with you just taking it?”, Bartender asks in audible confusion.</p><blockquote name="1d96" id="1d96" class="graf graf--blockquote graf-after--p">Look, I saw it on Internet that I should do things this way for everything. So it must be right. In fact, you need to setup observer at doors and toilets too. And that is just the start, you would eventually need more complicated observers for various stream control, you can even combine observers to make a new one!</blockquote><p name="06fa" id="06fa" class="graf graf--p graf-after--blockquote">RxSwift gets tossed out like a retard that he is.</p><h4 name="b844" id="b844" class="graf graf--h4 graf-after--p">Some remarks</h4><p name="cd48" id="cd48" class="graf graf--p graf-after--h4">A common misconception is that XXX works well in OOO, so let’s port it to iOS.</p><p name="cf55" id="cf55" class="graf graf--p graf-after--p">But remember, you are in the once-in-a-decade SDK revamping in iOS, with Swift as a evolving language.</p><p name="e6cd" id="e6cd" class="graf graf--p graf-after--p">For example, MVVM does not consider value type introduced by Swift. Yet SDK builds around it.</p><p name="a8c7" id="a8c7" class="graf graf--p graf-after--p">RxSwift builds on KVO black-box, which dates back from Objective-C times; and is now obsolete due to Apple’s new Combine framework. I can also tell you from experience that it’s a over-complicated mess. Most of the time you don’t need to worry about stream of events. When I was building a streaming app, you know what I used? A callback. It is situational at best, and you can tell from official SwiftUI/Combine tutorial. Apple does not use Combine for everything, like RxSwfit/RxCocoa did. SwiftUI is not based on MVVM as some would suggest. It builds on state changes like React and in the meantime exploit the benefits of value type.</p><p name="29a2" id="29a2" class="graf graf--p graf-after--p">If you look at any MVVM articles online, none of these would be mentioned.</p><p name="2d8a" id="2d8a" class="graf graf--p graf-after--p">It’s view-model, view-model, and more view-models. They are obsolete in SwiftUI already.</p><p name="f96c" id="f96c" class="graf graf--p graf-after--p">If you look at any RxSwift articles online, you have to start with Observer and stream of events. They would never tell you why you would need this except hinting at potential benefits.</p><p name="394f" id="394f" class="graf graf--p graf-after--p">It’s observer, subscribe, stream-of-events, and how you apply it to absolutely everywhere in your app. You need exactly none of that.</p><h4 name="8ceb" id="8ceb" class="graf graf--h4 graf-after--p">MVC is all you need</h4><p name="4f36" id="4f36" class="graf graf--p graf-after--h4">If you think RxSwift/MVVM/VIPER is clean architecture, you need to work on your skills.</p><p name="4427" id="4427" class="graf graf--p graf-after--p">Follow Apple SDK, practice your skills, do code review and refactor. Not rely on some magic to solve all your problems.</p><p name="f84c" id="f84c" class="graf graf--p graf-after--p">The architecture I proposed almost 4 years ago stood the test of time till this day. At no point in time I felt the need to try these <em class="markup--em markup--p-em">clean </em>architectures.</p><p name="4a43" id="4a43" class="graf graf--p graf-after--p"><strong class="markup--strong markup--p-strong">Because they did not do the job better to justify additional maintenance costs.</strong></p><p name="fa0e" id="fa0e" class="graf graf--p graf-after--p">What is such architecture? A couple of hand-picked libraries for specific tasks. all of which are lightweight and install-and-forget. Some self-grown libraries each about one page long with no dependency. The rest is just skill and experiences. All follow Apple’s view-controller centric SDK design. In fact I enhanced it to focus <em class="markup--em markup--p-em">more </em>on view controller, yet there’s nothing messy about my view controllers. It’s an ancient technique called refactor and arch-design that you are not going to learn following framework.</p><h4 name="597e" id="597e" class="graf graf--h4 graf-after--p">TL;DR</h4><p name="fc30" id="fc30" class="graf graf--p graf-after--h4 graf--trailing">RxSwift is retarded, MVVM is ueless in SwiftUI. MVC is all you need.</p></div></div></section>
+</section>
+<footer><p>By <a href="https://medium.com/@swift2931" class="p-author h-card">Jim Lai</a> on <a href="https://medium.com/p/17f49d367d78"><time class="dt-published" datetime="2020-01-18T07:54:13.752Z">January 18, 2020</time></a>.</p><p><a href="https://medium.com/@swift2931/mvc-mvvm-and-rxswift-walk-into-a-bar-17f49d367d78" class="p-canonical">Canonical link</a></p><p>Exported from <a href="https://medium.com">Medium</a> on December 9, 2023.</p></footer></article></body></html>
